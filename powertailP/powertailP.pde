@@ -1,7 +1,7 @@
 import spacebrew.*;
 import processing.serial.*;
 
-String server="sandbox.spacebrew.cc";
+String server="127.0.0.1";//"sandbox.spacebrew.cc";
 String name="PowerSwitch_Lamp";
 String description ="Lamp that blinks on and off";
 
