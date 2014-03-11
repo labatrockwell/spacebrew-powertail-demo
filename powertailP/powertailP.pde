@@ -1,7 +1,8 @@
 import spacebrew.*;
 import processing.serial.*;
+import com.rockwellgroup.arduinoconnect.*;
 
-String server="sandbox.spacebrew.cc";
+String server="127.0.0.1";//"sandbox.spacebrew.cc";
 String name="PowerSwitch_Lamp";
 String description ="Lamp that blinks on and off";
 
@@ -18,7 +19,7 @@ void setup() {
  spacebrewConnection.addPublish( "Blinked", true ); 
 
   // connect!
-  spacebrewConnection.connect("ws://"+server+":9000", name, description );
+  spacebrewConnection.connect(server, name, description );
 
   int i = 0;
   for(String s : Serial.list()){
@@ -28,7 +29,8 @@ void setup() {
   //You may need to change the serial port that Processing
   //connects to. Look at the output in the Processing console
   //to determine which index your Arduino is at.
-  myPort = new Serial(this, Serial.list()[0], 9600); 
+  //myPort = new Serial(this, Serial.list()[0], 9600);
+  myPort = new Serial(this, ArduinoConnect.getSerialPortName("64935343233351500000"), 9600); 
   myPort.bufferUntil('\n');
 }
 
